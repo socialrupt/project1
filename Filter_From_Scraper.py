@@ -14,7 +14,7 @@ from Online_Members_Only import *
 
 # Set these varibles
 
-Members_From = "cryptocomofficial"
+Members_From = "Scamalerts12"
 File_Save = "Members1.csv"
 File_From = "Members0.csv"
 Members_To_Add = 2000

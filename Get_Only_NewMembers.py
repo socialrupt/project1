@@ -8,8 +8,8 @@ api_hash = 'eb921ae6a9b1a9ba9245d675003fba66'
 client = TelegramClient('Fillter_Account', api_id, api_hash)
 
 # set these values
-Target_Gorup_ID = "officalwallstreetbets"
-Members_From = "cryptocomofficial"
+Target_Gorup_ID = "Scamalerts12"
+Members_From = "Vidycoin"
 File_Save = "members0.csv"
 # ----------------
 Target_Gorup_ID_Participents = []

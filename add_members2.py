@@ -27,8 +27,8 @@ for i in df["user id"].dropna():
     X.append(i)
 
 # Set these varibles
-Target_Gorup_ID = "officalwallstreetbets"
-Members_From = "cryptocomofficial"
+Target_Gorup_ID = "Middlemanandholders"
+Members_From = "FraudMarketGroup"
 Sleep_Until_Reconnect = 500
 Max_Sec_Adding = 100
 
