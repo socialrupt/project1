@@ -28,7 +28,7 @@ for i in df["user id"].dropna():
 
 # Set these varibles
 Target_Gorup_ID = "Scamalerts12"
-Members_From = "Vidycoin"
+Members_From = "VidyCoin"
 Sleep_Until_Reconnect = 500
 Max_Sec_Adding = 100
 

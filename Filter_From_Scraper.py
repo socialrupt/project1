@@ -15,10 +15,14 @@ from Online_Members_Only import *
 # Set these varibles
 
 Members_From = "Scamalerts12"
-File_Save = "Members1.csv"
+File_Save1 = "Members1.csv"
+File_Save2 = "Members2.csv"
+File_Save3 = "Members3.csv"
 File_From = "Members0.csv"
 Members_To_Add = 2000
 Sleep_Until_Reconnect = 500
+Line_Target = Members_To_Add // 3
+
 #---------------------------------------
 df = pd.read_csv(File_From, nrows=Members_To_Add)
 IDs_Not_Proccess = pd.read_csv(File_From, skiprows=Members_To_Add)
@@ -71,22 +75,77 @@ for A in reversed(X):
         time.sleep(Sleep_Until_Reconnect)
         continue
     finally:
-        with open(File_Save, "w", encoding='UTF-8') as f:
-            writer = csv.writer(f, delimiter=",", lineterminator="\n")
-            writer.writerow(['user id'])
-
-        with open(File_Save, "a+", encoding='UTF-8') as f:
-            writer = csv.writer(f, delimiter=",", lineterminator="\n")
-            for user in Filtered_Users:
-                writer.writerow([user.id])
 
 
+        df_File_Save1 = pd.read_csv("members1.csv")
+        df_File_Save2 = pd.read_csv("members2.csv")
+        df_File_Save3 = pd.read_csv("members3.csv")
 
-        with open(File_From, "w", encoding='UTF-8') as f: #TEST IF THIS WORKS   
-            writer = csv.writer(f, delimiter=",", lineterminator="\n")
-            writer.writerow(['user id'])
+        #Make it so after it does file 3 it then does 1 to 3 again
 
-        IDs_Not_Proccess.to_csv(File_From, index=False)
+        if len(df_File_Save1) < Line_Target:
+
+            with open(File_Save1, "w", encoding='UTF-8') as f:
+                writer = csv.writer(f, delimiter=",", lineterminator="\n")
+                writer.writerow(['user id'])
+
+            with open(File_Save1, "a+", encoding='UTF-8') as f:
+                writer = csv.writer(f, delimiter=",", lineterminator="\n")
+                for user in Filtered_Users:
+                    writer.writerow([user.id])
+
+
+
+            with open(File_From, "w", encoding='UTF-8') as f: #adds user id to the top and clears evey old list
+                writer = csv.writer(f, delimiter=",", lineterminator="\n")
+                writer.writerow(['user id'])
+
+            IDs_Not_Proccess.to_csv(File_From, index=False)#Adds the Ids that we sidnt proccess
+
+
+
+
+        else:
+            print(len(df_File_Save1))
+            if len(df_File_Save2) < Line_Target:
+                with open(File_Save2, "w", encoding='UTF-8') as f:
+                    writer = csv.writer(f, delimiter=",", lineterminator="\n")
+                    writer.writerow(['user id'])
+
+                with open(File_Save2, "a+", encoding='UTF-8') as f:
+                    writer = csv.writer(f, delimiter=",", lineterminator="\n")
+                    for user in Filtered_Users:
+                        writer.writerow([user.id])
+
+                with open(File_From, "w", encoding='UTF-8') as f:
+                    writer = csv.writer(f, delimiter=",", lineterminator="\n")
+                    writer.writerow(['user id'])
+
+                IDs_Not_Proccess.to_csv(File_From, index=False)
+            else:
+                print(len(df_File_Save2))
+                if len(df_File_Save3) < Line_Target:
+
+                    with open(File_Save3, "w", encoding='UTF-8') as f:
+                        writer = csv.writer(f, delimiter=",", lineterminator="\n")
+                        writer.writerow(['user id'])
+
+                    with open(File_Save3, "a+", encoding='UTF-8') as f:
+                        writer = csv.writer(f, delimiter=",", lineterminator="\n")
+                        for user in Filtered_Users:
+                            writer.writerow([user.id])
+
+                    with open(File_From, "w", encoding='UTF-8') as f:
+                        writer = csv.writer(f, delimiter=",", lineterminator="\n")
+                        writer.writerow(['user id'])
+
+                    IDs_Not_Proccess.to_csv(File_From, index=False)
+
+                else:
+
+                    print("jvndfjfvdj")
+
+
 
 
 print("Done Add_Members")
